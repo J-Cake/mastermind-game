@@ -2,10 +2,10 @@
     "name": "nn",
     "version": "1.0.0",
     "description": "",
-    "main": "index.js",
+    "main": "build/app/server.js",
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
-        "web": "gulp && node ./build/app/web.js"
+        "web": "gulp && node ./build/app/server.js"
     },
     "keywords": [],
     "author": "",

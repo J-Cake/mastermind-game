@@ -133,14 +133,19 @@ function WebBuild() {
         .pipe(browserify())
         .pipe(terser())
         .pipe(dest('./build/final'));
-    const Worker = () => src('./build/app/worker/worker.js')
-        .pipe(browserify())
-        .pipe(terser())
-        .pipe(dest('./build/final'));
 
-    return parallel(App, Worker);
+    // const Worker = () => src('./build/app/worker/worker.js')
+    //     .pipe(browserify())
+    //     .pipe(terser())
+    //     .pipe(dest('./build/final'));
+
+    // return parallel(App, Worker);
+
+    return parallel(App);
 }
 
 exports.DevBuild = series(PreBuild(), DevBuild());
 exports.WebBuild = series(PreBuild(), WebBuild());
+
+exports.defaut = series(PreBuild(), WebBuild());
 // TODO: Electron Full Build
