@@ -50,12 +50,12 @@ export default class Board extends RenderObject{
         const width: number = sketch.width;
         const height: number = sketch.height;
 
-        const factor: number = Math.min(width, height) / Math.max(this.width, this.height);
+        const factor: number = Math.min(width, height) / Math.max(this.aspectWidth, this.aspectHeight);
 
-        this.width = (this.width * factor) - (2 * this.padding);
-        this.height = (this.height * factor) - (2 * this.padding);
+        this.x = width / 2 - (this.aspectWidth * factor) / 2 + this.padding;
+        this.y = height / 2 - (this.aspectHeight * factor) / 2 + this.padding;
 
-        this.x = width / 2 - (this.width * factor) / 2;
-        this.y = height / 2 - (this.height * factor) / 2;
+        this.width = (this.aspectWidth * factor) - (2 * this.padding);
+        this.height = (this.aspectHeight * factor) - (2 * this.padding);
     }
 }
