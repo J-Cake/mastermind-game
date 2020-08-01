@@ -9,10 +9,32 @@ export default class Board extends RenderObject{
 
     guessPatterns: Pattern[];
 
+    width: number;
+    height: number;
+
+    padding: number;
+
+    x: number;
+    y: number;
+
+    aspectWidth: number;
+    aspectHeight: number;
+
     constructor() {
         super(); 
         this.guessPatterns = [];
         this.coveredPattern = this.generatePattern();
+
+        this.aspectWidth = 9;
+        this.aspectHeight = 16;
+
+        this.width = 0;
+        this.height = 0;
+
+        this.padding = 24;
+
+        this.x = 0;
+        this.y = 0;
     }
 
     generatePattern(): Pattern {
@@ -21,22 +43,19 @@ export default class Board extends RenderObject{
     }
 
     render(sketch: p5): void {
+        sketch.rect(this.x, this.y, this.width, this.height);
+    }
+    
+    update(sketch: p5): void {
         const width: number = sketch.width;
         const height: number = sketch.height;
 
-        const padding = 24; // amount of space to leave around the board
+        const factor: number = Math.min(width, height) / Math.max(this.width, this.height);
 
-        const boardWidth = 9;
-        const boardHeight = 16;
+        this.width = (this.width * factor) - (2 * this.padding);
+        this.height = (this.height * factor) - (2 * this.padding);
 
-        const factor: number = Math.min(width, height) / Math.max(boardWidth, boardHeight);
-
-        const x = width / 2 - (boardWidth * factor) / 2;
-        const y = height / 2 - (boardHeight * factor) / 2;
-
-        sketch.rect(x + padding, y + padding, (boardWidth * factor) - (2 * padding), (boardHeight * factor) - (2 * padding));
-    }
-    update(): void {
-        
+        this.x = width / 2 - (this.width * factor) / 2;
+        this.y = height / 2 - (this.height * factor) / 2;
     }
 }

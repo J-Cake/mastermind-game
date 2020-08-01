@@ -18,5 +18,5 @@ export default abstract class RenderObject {
     }
 
     protected abstract render(sketch: p5): void;
-    protected abstract update(): void;
+    protected abstract update(sketch: p5): void;
 }
