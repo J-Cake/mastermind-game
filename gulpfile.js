@@ -134,6 +134,7 @@ function WebBuild() {
         .pipe(terser())
         .pipe(dest('./build/final'));
 
+    // WebWorker In case it's needed    
     // const Worker = () => src('./build/app/worker/worker.js')
     //     .pipe(browserify())
     //     .pipe(terser())
