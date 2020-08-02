@@ -3,11 +3,12 @@
 const fs = require('fs');
 const path = require('path');
 const through = require('through2');
+const source = require('vinyl-source-stream');
 
-const {series, parallel, src, dest} = require('gulp');
+const {series, parallel, src, dest, task} = require('gulp');
 
-const browserify = require('gulp-browserify');
-const terser = require('gulp-terser');
+const browserify = require('browserify');
+// const terser = require('terser');
 
 function htmlTransform(escape = false) {
     let bracketCount = 0;
@@ -118,35 +119,9 @@ function PreBuild() {
 
     return series(ClearPrevBuild, parallel(CompileHTML, CopyStaticResources));
 }
-function DevBuild() {
-    const App = () => src('./build/app/src/index.js')
-        .pipe(browserify())
-        .pipe(dest('./build/final'));
-    const Worker = () => src('./build/app/worker/worker.js')
-        .pipe(browserify())
-        .pipe(dest('./build/final'));
 
-    return parallel(App, Worker);
-}
-function WebBuild() {
-    const App = () => src('./build/app/src/index.js')
-        .pipe(browserify())
-        .pipe(terser())
-        .pipe(dest('./build/final'));
-
-    // WebWorker In case it's needed    
-    // const Worker = () => src('./build/app/worker/worker.js')
-    //     .pipe(browserify())
-    //     .pipe(terser())
-    //     .pipe(dest('./build/final'));
-
-    // return parallel(App, Worker);
-
-    return parallel(App);
-}
-
-exports.DevBuild = series(PreBuild(), DevBuild());
-exports.WebBuild = series(PreBuild(), WebBuild());
-
-exports.defaut = series(PreBuild(), WebBuild());
-// TODO: Electron Full Build
+exports = task("Build", function() {
+    return series(PreBuild(), browserify("./build/app/src/index.js").bundle()
+        .pipe(source('index.js'))
+        .pipe(dest('./build/final')));
+});
