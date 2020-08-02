@@ -4,8 +4,7 @@
     "description": "",
     "main": "build/app/server.js",
     "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1",
-        "web": "gulp && node ./build/app/server.js"
+        "build": "tsc && gulp DevBuild"
     },
     "keywords": [],
     "author": "",
@@ -24,14 +23,14 @@
         "@types/seedrandom": "^2.4.28",
         "@types/source-map-support": "^0.5.1",
         "browserify": "^16.5.0",
+        "terser": "^5.0.0",
         "express": "^4.17.1",
         "gulp": "^4.0.2",
-        "gulp-browserify": "^0.5.1",
         "gulp-rename": "^2.0.0",
         "gulp-sourcemaps": "^2.6.5",
-        "gulp-terser": "^1.2.0",
         "through2": "^3.0.1",
         "typescript": "latest",
-        "uglify-es": "^3.3.9"
+        "uglify-es": "^3.3.9",
+        "vinyl-source-stream": "^2.0.0"
     }
 }
