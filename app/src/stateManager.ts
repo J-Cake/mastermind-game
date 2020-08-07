@@ -4,17 +4,17 @@ export default class StateManager<State> {
     private readonly watchers: ((state: State) => any)[];
     private readonly eventHandlers: {callback: (state: State) => any, name: string}[];
 
-    private utils: {
-        [name: string]: (state: State) => any
-    };
+    // private utils: {
+    //     [name: string]: (state: State) => any
+    // };
 
-    constructor(defaults?: Partial<State>) {
+    constructor(defaults?: Partial<State>) { // , utils?: {[name: string]: (state: State) => any}
         this.watchers = [];
         this.eventHandlers = [];
 
         this.globState = defaults as State;
 
-        this.utils = {};
+        // this.utils = utils || {};
     }
 
     private invokeHandlers() {

@@ -3,7 +3,7 @@ import * as p5 from 'p5';
 export default abstract class RenderObject {
     private static objs: RenderObject[] = [];
 
-    constructor() {
+    protected constructor() {
         RenderObject.objs.push(this);
     }
 
@@ -12,11 +12,11 @@ export default abstract class RenderObject {
             obj.render(sketch);
     }
 
-    public static tick(): void {
+    public static tick(sketch: p5): void {
         for (const obj of RenderObject.objs)
-            obj.update();
+            obj.update(sketch);
     }
 
-    protected abstract render(sketch: p5): void;
+    abstract render(sketch: p5): void;
     protected abstract update(sketch: p5): void;
 }

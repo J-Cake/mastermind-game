@@ -3,7 +3,6 @@ const path = require('path');
 const childProcess = require('child_process');
 
 const browserify = require('browserify');
-const { ENOENT } = require('constants');
 
 const awaitProc = cli => new Promise(function (resolve, reject) {
     const proc = childProcess.exec(cli);
