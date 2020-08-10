@@ -35,12 +35,10 @@ export default class PinRack extends RenderObject {
     }
 
     render(sketch: p5): void {
-        sketch.fill(getColour(Colour.Blank)); // TODO: Replace with textured image
+        sketch.noStroke();
+        sketch.fill(getColour(Colour.Panel)); // TODO: Replace with textured image
 
         sketch.rect(this.pos.x, this.pos.y, this.size.w, this.size.h);
-
-        sketch.noFill();
-        sketch.noStroke();
     }
 
     protected update(sketch: p5): void {

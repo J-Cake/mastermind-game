@@ -1,3 +1,5 @@
+import {manager} from "./index";
+
 enum Colour {
     Red,
     Pink,
@@ -7,23 +9,49 @@ enum Colour {
     Blue,
     White,
     Black,
+    Panel,
+    Background,
     Blank
 }
 
 export default Colour;
 
-export function getColour(colour: Colour): [number, number, number] {
-    const colours: Record<Colour, [number, number, number]> = {
+export enum Theme {
+    Light,
+    Dark
+}
+
+const themes: Record<Theme, () => Record<Colour, [number, number, number]>> = {
+    [Theme.Light]: () => ({
         [Colour.Red]: [224, 4, 25],
         [Colour.Blue]: [66, 135, 245],
         [Colour.Orange]: [255, 106, 0],
-        [Colour.Green]: [0, 252, 155],
-        [Colour.Yellow]: [252, 227, 0],
+        [Colour.Green]: [0, 210, 35],
+        [Colour.Yellow]: [235, 210, 0],
         [Colour.Pink]: [245, 56, 201],
         [Colour.White]: [245, 245, 245],
         [Colour.Black]: [25, 25, 25],
+        [Colour.Panel]: [235, 235, 235],
+        [Colour.Background]: [255, 255, 255],
         [Colour.Blank]: [60, 65, 70],
-    };
+    }),
+    [Theme.Dark]: () => ({
+        [Colour.Red]: [224, 4, 25],
+        [Colour.Blue]: [66, 135, 245],
+        [Colour.Orange]: [255, 106, 0],
+        [Colour.Green]: [0, 210, 35],
+        [Colour.Yellow]: [235, 210, 0],
+        [Colour.Pink]: [245, 56, 201],
+        [Colour.White]: [245, 245, 245],
+        [Colour.Black]: [25, 25, 25],
+        [Colour.Panel]: [60, 65, 70],
+        [Colour.Background]: [25, 30, 35],
+        [Colour.Blank]: [235, 235, 235],
+    })
+}
+
+export function getColour(colour: Colour): [number, number, number] {
+    const colours: Record<Colour, [number, number, number]> = themes[manager.setState().theme]();
 
     return colours[colour];
 }

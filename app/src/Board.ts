@@ -4,9 +4,11 @@ import {Pattern} from './Pin';
 import RenderObject from './RenderObject';
 import Row from './Row';
 import EditableRow from "./EditableRow";
+import Colour, {getColour} from "./Colour";
+import PatternView from "./PatternView";
 
 export default class Board extends RenderObject {
-    coveredPattern: Pattern;
+    pattern: PatternView;
 
     guessPatterns: Pattern[];
 
@@ -27,8 +29,6 @@ export default class Board extends RenderObject {
         super();
 
         this.guessPatterns = [];
-        // this.coveredPattern = [];
-        this.coveredPattern = this.generatePattern();
 
         this.aspectWidth = 9;
         this.aspectHeight = 16;
@@ -44,6 +44,8 @@ export default class Board extends RenderObject {
             h: 0
         };
 
+        this.pattern = new PatternView();
+
         this.rowAmount = 10;
 
         this.rows = [];
@@ -51,16 +53,13 @@ export default class Board extends RenderObject {
         this.currentRow = new EditableRow();
     }
 
-    generatePattern(): Pattern {
-        return (null as any) as Pattern;
-    }
-
     addRow(pattern: Pattern): void {
         this.rows.push(new Row(this.rows[this.rows.length - 1], pattern));
     }
 
     render(sketch: p5): void {
-        sketch.fill([235, 235, 235]);
+        sketch.noStroke();
+        sketch.fill(getColour(Colour.Panel));
         sketch.rect(this.pos.x, this.pos.y, this.size.w, this.size.h);
     }
 

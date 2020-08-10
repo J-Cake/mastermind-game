@@ -1,0 +1,267 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="2ce81aa9-9d82-4382-9f21-125c6c324b7a" name="Default Changelist" comment="delete build">
+      <change afterPath="$PROJECT_DIR$/app/src/PatternView.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/PinPlaceholder.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/ThemeSwitcher.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.vscode/settings.json" beforeDir="false" afterPath="$PROJECT_DIR$/.vscode/settings.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.vscode/tasks.json" beforeDir="false" afterPath="$PROJECT_DIR$/.vscode/tasks.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/Board.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/Board.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/Colour.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/Colour.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/DragPin.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/DragPin.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/EditableRow.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/EditableRow.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/PinRack.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/PinRack.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pnpm-lock.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pnpm-lock.yaml" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ChangesViewManager">
+    <option name="groupingKeys">
+      <option value="directory" />
+    </option>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="TypeScript File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="1fhg6W3IMrj723LCudZ9OraWNpE" />
+  <component name="ProjectViewState">
+    <option name="compactDirectories" value="true" />
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="false" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="dart.analysis.tool.window.visible" value="false" />
+    <property name="javascript.nodejs.core.library.configured.version" value="14.5.0" />
+    <property name="javascript.nodejs.core.library.typings.version" value="14.0.27" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+    <property name="ts.external.directory.path" value="$PROJECT_DIR$/node_modules/typescript/lib" />
+  </component>
+  <component name="RunManager" selected="Node.js.build.js">
+    <configuration name="Server" type="NodeJSConfigurationType" path-to-js-file="build/app/server.js" working-dir="$PROJECT_DIR$">
+      <method v="2">
+        <option name="RunConfigurationTask" enabled="true" run_configuration_name="build.js" run_configuration_type="NodeJSConfigurationType" />
+      </method>
+    </configuration>
+    <configuration name="build.js" type="NodeJSConfigurationType" nameIsGenerated="true" path-to-js-file="bin/build.js" working-dir="$PROJECT_DIR$">
+      <method v="2">
+        <option name="TypeScript.Before.Run" enabled="true" FAIL_ON_ERROR="true" CONFIG_PATH="$PROJECT_DIR$/tsconfig.json" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="Node.js.build.js" />
+      <item itemvalue="Node.js.Server" />
+    </list>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="2ce81aa9-9d82-4382-9f21-125c6c324b7a" name="Default Changelist" comment="" />
+      <created>1596675563385</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1596675563385</updated>
+      <workItem from="1596675564450" duration="2568000" />
+      <workItem from="1596678593684" duration="104000" />
+      <workItem from="1596699182724" duration="8566000" />
+      <workItem from="1596803562078" duration="1646000" />
+      <workItem from="1596805226295" duration="13000000" />
+      <workItem from="1596974123067" duration="3840000" />
+      <workItem from="1597014832439" duration="4001000" />
+    </task>
+    <task id="LOCAL-00001" summary="Added Drag'n'nDrop to place pins, created button mechanism and implemented guess rows.">
+      <created>1596811195210</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1596811195210</updated>
+    </task>
+    <task id="LOCAL-00002" summary="delete build">
+      <created>1596811417035</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1596811417035</updated>
+    </task>
+    <task id="LOCAL-00003" summary="delete build">
+      <created>1596811452386</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1596811452386</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Added Drag'n'nDrop to place pins, created button mechanism and implemented guess rows." />
+    <MESSAGE value="delete build" />
+    <option name="LAST_COMMIT_MESSAGE" value="delete build" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="424" y="193" width="1071" height="732" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1596776077324">
+      <screen x="0" y="30" width="1920" height="1010" />
+    </state>
+    <state x="424" y="193" width="1071" height="732" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.30.1920.1010@0.30.1920.1010" timestamp="1596678108011" />
+    <state x="424" y="193" key="#com.intellij.execution.impl.EditConfigurationsDialog/1920.0.1920.1080/0.30.1920.1010@0.30.1920.1010" timestamp="1596776077324" />
+    <state x="773" y="254" key="#com.intellij.ide.util.MemberChooser" timestamp="1596976554859">
+      <screen x="0" y="30" width="1920" height="1010" />
+    </state>
+    <state x="773" y="254" key="#com.intellij.ide.util.MemberChooser/1920.0.1920.1080/0.30.1920.1010@0.30.1920.1010" timestamp="1596976554859" />
+    <state x="698" y="284" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1597017622613">
+      <screen x="0" y="30" width="1920" height="1010" />
+    </state>
+    <state x="698" y="284" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.30.1920.1010@0.30.1920.1010" timestamp="1597017622613" />
+    <state x="698" y="284" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/1920.0.1920.1080/0.30.1920.1010@0.30.1920.1010" timestamp="1596789095264" />
+    <state x="707" y="393" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1" timestamp="1596811170498">
+      <screen x="0" y="30" width="1920" height="1010" />
+    </state>
+    <state x="707" y="393" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/1920.0.1920.1080/0.30.1920.1010@0.30.1920.1010" timestamp="1596811170498" />
+    <state x="747" y="293" key="FileChooserDialogImpl" timestamp="1596678106266">
+      <screen x="0" y="30" width="1920" height="1010" />
+    </state>
+    <state x="747" y="293" key="FileChooserDialogImpl/0.30.1920.1010@0.30.1920.1010" timestamp="1596678106266" />
+    <state width="1878" height="271" key="GridCell.Tab.0.bottom" timestamp="1597038419230">
+      <screen x="0" y="30" width="1920" height="1010" />
+    </state>
+    <state width="1878" height="271" key="GridCell.Tab.0.bottom/0.30.1920.1010@0.30.1920.1010" timestamp="1597038419230" />
+    <state width="1878" height="272" key="GridCell.Tab.0.bottom/1920.0.1920.1080/0.30.1920.1010@0.30.1920.1010" timestamp="1597010856868" />
+    <state width="1878" height="272" key="GridCell.Tab.0.bottom/1920.0.1920.1080/0.30.1920.1010@1920.0.1920.1080" timestamp="1596977695443" />
+    <state width="1878" height="271" key="GridCell.Tab.0.center" timestamp="1597038419228">
+      <screen x="0" y="30" width="1920" height="1010" />
+    </state>
+    <state width="1878" height="271" key="GridCell.Tab.0.center/0.30.1920.1010@0.30.1920.1010" timestamp="1597038419228" />
+    <state width="1878" height="272" key="GridCell.Tab.0.center/1920.0.1920.1080/0.30.1920.1010@0.30.1920.1010" timestamp="1597010856868" />
+    <state width="1878" height="272" key="GridCell.Tab.0.center/1920.0.1920.1080/0.30.1920.1010@1920.0.1920.1080" timestamp="1596977695443" />
+    <state width="1878" height="271" key="GridCell.Tab.0.left" timestamp="1597038419227">
+      <screen x="0" y="30" width="1920" height="1010" />
+    </state>
+    <state width="1878" height="271" key="GridCell.Tab.0.left/0.30.1920.1010@0.30.1920.1010" timestamp="1597038419227" />
+    <state width="1878" height="272" key="GridCell.Tab.0.left/1920.0.1920.1080/0.30.1920.1010@0.30.1920.1010" timestamp="1597010856867" />
+    <state width="1878" height="272" key="GridCell.Tab.0.left/1920.0.1920.1080/0.30.1920.1010@1920.0.1920.1080" timestamp="1596977695443" />
+    <state width="1878" height="271" key="GridCell.Tab.0.right" timestamp="1597038419228">
+      <screen x="0" y="30" width="1920" height="1010" />
+    </state>
+    <state width="1878" height="271" key="GridCell.Tab.0.right/0.30.1920.1010@0.30.1920.1010" timestamp="1597038419228" />
+    <state width="1878" height="272" key="GridCell.Tab.0.right/1920.0.1920.1080/0.30.1920.1010@0.30.1920.1010" timestamp="1597010856868" />
+    <state width="1878" height="272" key="GridCell.Tab.0.right/1920.0.1920.1080/0.30.1920.1010@1920.0.1920.1080" timestamp="1596977695443" />
+    <state width="1878" height="337" key="GridCell.Tab.1.bottom" timestamp="1596801745134">
+      <screen x="0" y="30" width="1920" height="1010" />
+    </state>
+    <state width="1878" height="337" key="GridCell.Tab.1.bottom/1920.0.1920.1080/0.30.1920.1010@0.30.1920.1010" timestamp="1596801745134" />
+    <state width="1878" height="337" key="GridCell.Tab.1.center" timestamp="1596801745134">
+      <screen x="0" y="30" width="1920" height="1010" />
+    </state>
+    <state width="1878" height="337" key="GridCell.Tab.1.center/1920.0.1920.1080/0.30.1920.1010@0.30.1920.1010" timestamp="1596801745134" />
+    <state width="1878" height="337" key="GridCell.Tab.1.left" timestamp="1596801745134">
+      <screen x="0" y="30" width="1920" height="1010" />
+    </state>
+    <state width="1878" height="337" key="GridCell.Tab.1.left/1920.0.1920.1080/0.30.1920.1010@0.30.1920.1010" timestamp="1596801745134" />
+    <state width="1878" height="337" key="GridCell.Tab.1.right" timestamp="1596801745134">
+      <screen x="0" y="30" width="1920" height="1010" />
+    </state>
+    <state width="1878" height="337" key="GridCell.Tab.1.right/1920.0.1920.1080/0.30.1920.1010@0.30.1920.1010" timestamp="1596801745134" />
+    <state width="1878" height="337" key="GridCell.Tab.2.bottom" timestamp="1596801745134">
+      <screen x="0" y="30" width="1920" height="1010" />
+    </state>
+    <state width="1878" height="337" key="GridCell.Tab.2.bottom/1920.0.1920.1080/0.30.1920.1010@0.30.1920.1010" timestamp="1596801745134" />
+    <state width="1878" height="337" key="GridCell.Tab.2.center" timestamp="1596801745134">
+      <screen x="0" y="30" width="1920" height="1010" />
+    </state>
+    <state width="1878" height="337" key="GridCell.Tab.2.center/1920.0.1920.1080/0.30.1920.1010@0.30.1920.1010" timestamp="1596801745134" />
+    <state width="1878" height="337" key="GridCell.Tab.2.left" timestamp="1596801745134">
+      <screen x="0" y="30" width="1920" height="1010" />
+    </state>
+    <state width="1878" height="337" key="GridCell.Tab.2.left/1920.0.1920.1080/0.30.1920.1010@0.30.1920.1010" timestamp="1596801745134" />
+    <state width="1878" height="337" key="GridCell.Tab.2.right" timestamp="1596801745134">
+      <screen x="0" y="30" width="1920" height="1010" />
+    </state>
+    <state width="1878" height="337" key="GridCell.Tab.2.right/1920.0.1920.1080/0.30.1920.1010@0.30.1920.1010" timestamp="1596801745134" />
+    <state width="1878" height="337" key="GridCell.Tab.3.bottom" timestamp="1596801745135">
+      <screen x="0" y="30" width="1920" height="1010" />
+    </state>
+    <state width="1878" height="337" key="GridCell.Tab.3.bottom/1920.0.1920.1080/0.30.1920.1010@0.30.1920.1010" timestamp="1596801745135" />
+    <state width="1878" height="337" key="GridCell.Tab.3.center" timestamp="1596801745135">
+      <screen x="0" y="30" width="1920" height="1010" />
+    </state>
+    <state width="1878" height="337" key="GridCell.Tab.3.center/1920.0.1920.1080/0.30.1920.1010@0.30.1920.1010" timestamp="1596801745135" />
+    <state width="1878" height="337" key="GridCell.Tab.3.left" timestamp="1596801745134">
+      <screen x="0" y="30" width="1920" height="1010" />
+    </state>
+    <state width="1878" height="337" key="GridCell.Tab.3.left/1920.0.1920.1080/0.30.1920.1010@0.30.1920.1010" timestamp="1596801745134" />
+    <state width="1878" height="337" key="GridCell.Tab.3.right" timestamp="1596801745135">
+      <screen x="0" y="30" width="1920" height="1010" />
+    </state>
+    <state width="1878" height="337" key="GridCell.Tab.3.right/1920.0.1920.1080/0.30.1920.1010@0.30.1920.1010" timestamp="1596801745135" />
+    <state x="560" y="269" key="Vcs.Push.Dialog.v2" timestamp="1596811456045">
+      <screen x="0" y="30" width="1920" height="1010" />
+    </state>
+    <state x="560" y="269" key="Vcs.Push.Dialog.v2/1920.0.1920.1080/0.30.1920.1010@0.30.1920.1010" timestamp="1596811456045" />
+    <state x="624" y="244" key="run.anything.popup" timestamp="1596855451245">
+      <screen x="0" y="30" width="1920" height="1010" />
+    </state>
+    <state x="624" y="244" key="run.anything.popup/1920.0.1920.1080/0.30.1920.1010@0.30.1920.1010" timestamp="1596855451245" />
+    <state x="623" y="249" width="672" height="678" key="search.everywhere.popup" timestamp="1597016945577">
+      <screen x="0" y="30" width="1920" height="1010" />
+    </state>
+    <state x="623" y="249" width="672" height="678" key="search.everywhere.popup/0.30.1920.1010@0.30.1920.1010" timestamp="1597016945577" />
+    <state x="623" y="249" width="672" height="678" key="search.everywhere.popup/1920.0.1920.1080/0.30.1920.1010@0.30.1920.1010" timestamp="1596810766829" />
+  </component>
+</project>

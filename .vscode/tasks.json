@@ -7,6 +7,17 @@
 			"group": "build",
 			"problemMatcher": [],
 			"label": "gulp: WebBuild"
+		},
+		{
+			"type": "npm",
+			"script": "build",
+			"group": {
+				"kind": "build",
+				"isDefault": true
+			},
+			"problemMatcher": [],
+			"label": "npm: build",
+			"detail": "tsc && gulp WebBuild"
 		}
 	]
 }

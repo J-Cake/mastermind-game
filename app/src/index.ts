@@ -5,6 +5,8 @@ import Board from "./Board";
 import DragObject from "./DragObject";
 import DropObject from "./DropObject";
 import PinRack from "./PinRack";
+import Colour, {getColour, Theme} from "./Colour";
+import ThemeSwitcher from "./ThemeSwitcher";
 
 export interface State {
     board: Board,
@@ -19,7 +21,9 @@ export interface State {
         x: number,
         y: number
     },
-    dropObjects: DropObject[]
+    dropObjects: DropObject[],
+    theme: Theme,
+    themeSwitcher: ThemeSwitcher
 }
 
 export const manager: StateManager<State> = new StateManager<State>({
@@ -27,7 +31,8 @@ export const manager: StateManager<State> = new StateManager<State>({
     dragObjects: [],
     mouse: {x: 0, y: 0},
     dragStart: {x: 0, y: 0},
-    dropObjects: []
+    dropObjects: [],
+    theme: Theme.Dark
 });
 
 const app: p5 = new p5(function (sketch) {
@@ -40,7 +45,8 @@ const app: p5 = new p5(function (sketch) {
 
         manager.setState({
             board: new Board(),
-            pinRack: new PinRack()
+            pinRack: new PinRack(),
+            themeSwitcher: new ThemeSwitcher()
         });
 
         window.addEventListener("click", function() {
@@ -72,7 +78,7 @@ const app: p5 = new p5(function (sketch) {
     }
 
     sketch.draw = function () {
-        sketch.background([255, 255, 255]);
+        sketch.background(getColour(Colour.Background));
 
         const {board} = manager.setState({
             mouse: {

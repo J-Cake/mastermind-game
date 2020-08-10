@@ -86,7 +86,7 @@ export default class EditableRow extends RenderObject {
             sketch.rect(pos.x, pos.y, size.w, size.h);
 
             sketch.noFill();
-            sketch.stroke(getColour(Colour.White));
+            sketch.stroke(getColour(Colour.Background));
             sketch.strokeWeight(10);
             sketch.beginShape();
 

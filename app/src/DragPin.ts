@@ -1,8 +1,10 @@
 import * as p5 from 'p5';
 
 import DragObject from "./DragObject";
-import Colour, {getColour} from "./Colour";
+import Colour, { getColour } from "./Colour";
 import Row from "./Row";
+import { manager } from '.';
+import PinHole from './PinHole';
 
 export default class DragPin extends DragObject {
     readonly colour: Colour;
@@ -11,6 +13,17 @@ export default class DragPin extends DragObject {
         super(true);
 
         this.colour = colour;
+
+        manager.on("click", state => this.click(state.mouse))
+    }
+
+    click(mouse: { x: number, y: number }) {
+        if (this.isHover(mouse)) {
+            const pin: PinHole | undefined = manager.setState().board.currentRow.pins.find(i => i.colour === Colour.Blank);
+            
+            if (pin)
+                pin.colour = this.colour;
+        }
     }
 
     protected isHover(mousePos: { x: number; y: number }): boolean {
