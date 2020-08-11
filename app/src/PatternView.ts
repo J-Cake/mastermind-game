@@ -37,7 +37,7 @@ export default class PatternView extends RenderObject {
         manager.on("win", () => this.pins.forEach(i => i.concealColour = false))
         manager.on("lose", () => this.pins.forEach(i => i.concealColour = false))
 
-        this.pins = this.pattern.map((i, a) => new PinPlaceholder(i, a, this, false));
+        this.pins = this.pattern.map((i, a) => new PinPlaceholder(i, a, this, true));
     }
 
     generatePattern(): Pattern {
