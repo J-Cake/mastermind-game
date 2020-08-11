@@ -1,9 +1,9 @@
 import * as p5 from 'p5';
 import RenderObject from './RenderObject';
-import { manager } from '.';
+import {manager} from '.';
 import Board from './Board';
-import Pin, { Pattern } from "./Pin";
-import Colour, { getColour } from "./Colour";
+import Pin, {Pattern} from "./Pin";
+import Colour, {getColour} from "./Colour";
 
 export type Mark = Colour.White | Colour.Black | null;
 
@@ -49,28 +49,33 @@ export default class Row extends RenderObject {
     eval(pattern: Pattern): [Mark, Mark, Mark, Mark] {
         const guess: Pattern = [...pattern];
         const secret: Pattern = [...manager.setState().board.pattern.pattern];
-        const mark: Mark[] = [];
+
+        if (!guess.map((i, a) => i === secret[a]).includes(false))
+            manager.broadcast("win");
+
+        const _mark: Mark[] = [];
 
         secret.forEach((i, a) => {
-            const index: number = guess.findIndex(j => j === i);
+            if (i === guess[a]) {
+                _mark.push(Colour.Black);
+                secret[a] = null as unknown as any;
+            }
+        })
+        secret.forEach((i, a) => {
+            if (i) {
+                const index = guess.indexOf(i);
 
-            if (index > -1) {
-                if (index === a)
-                    mark.push(Colour.Black);
-                else
-                    mark.push(Colour.White)
-                guess.splice(a, 1);
-            } else
-                mark.push(null);
+                if (index > -1 && index !== a)
+                    _mark.push(Colour.White);
+            }
         });
 
-        const _mark: Mark[] = mark.sort(function (i, j) {
-            const order = [Colour.White, null, Colour.Black];
-            return i === j ? 0 : (order.indexOf(i) > order.indexOf(j) ? 1 : -1);
-        });
+        const mark: [Mark, Mark, Mark, Mark] = [_mark[0], _mark[1], _mark[2], _mark[3]]
 
-        return [_mark[0], _mark[1], _mark[2], _mark[3]];
+        if (!mark.map(i => i === Colour.Black).includes(false))
+            manager.broadcast("win");
 
+        return mark;
     }
 
     render(sketch: p5): void {

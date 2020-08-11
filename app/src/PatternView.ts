@@ -5,6 +5,7 @@ import {Pattern} from "./Pin";
 import Colour, {getColour} from "./Colour";
 import Row from "./Row";
 import PinPlaceholder from "./PinPlaceholder";
+import { manager } from '.';
 
 export default class PatternView extends RenderObject {
     readonly pinCellSize = Row.pinRadius * 1.75;
@@ -33,7 +34,10 @@ export default class PatternView extends RenderObject {
             h: 0
         };
 
-        this.pins = this.pattern.map((i, a) => new PinPlaceholder(i, a, this, true));
+        manager.on("win", () => this.pins.forEach(i => i.concealColour = false))
+        manager.on("lose", () => this.pins.forEach(i => i.concealColour = false))
+
+        this.pins = this.pattern.map((i, a) => new PinPlaceholder(i, a, this, false));
     }
 
     generatePattern(): Pattern {

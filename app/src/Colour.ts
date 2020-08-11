@@ -11,7 +11,9 @@ enum Colour {
     Black,
     Panel,
     Background,
-    Blank
+    Blank,
+    Win,
+    Lose
 }
 
 export default Colour;
@@ -34,6 +36,8 @@ const themes: Record<Theme, () => Record<Colour, [number, number, number]>> = {
         [Colour.Panel]: [235, 235, 235],
         [Colour.Background]: [255, 255, 255],
         [Colour.Blank]: [60, 65, 70],
+        [Colour.Win]: [15, 188, 100],
+        [Colour.Lose]: [188, 15, 101]
     }),
     [Theme.Dark]: () => ({
         [Colour.Red]: [224, 4, 25],
@@ -47,6 +51,8 @@ const themes: Record<Theme, () => Record<Colour, [number, number, number]>> = {
         [Colour.Panel]: [60, 65, 70],
         [Colour.Background]: [25, 30, 35],
         [Colour.Blank]: [235, 235, 235],
+        [Colour.Win]: [15, 188, 100],
+        [Colour.Lose]: [188, 15, 101]
     })
 }
 

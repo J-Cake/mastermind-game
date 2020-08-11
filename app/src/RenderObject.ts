@@ -3,8 +3,9 @@ import * as p5 from 'p5';
 export default abstract class RenderObject {
     private static objs: RenderObject[] = [];
 
-    protected constructor() {
-        RenderObject.objs.push(this);
+    protected constructor(skipRender: boolean = false) {
+        if (!skipRender)
+            RenderObject.objs.push(this);
     }
 
     public static draw(sketch: p5): void {

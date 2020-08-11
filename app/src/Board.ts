@@ -6,6 +6,7 @@ import Row from './Row';
 import EditableRow from "./EditableRow";
 import Colour, {getColour} from "./Colour";
 import PatternView from "./PatternView";
+import { manager } from '.';
 
 export default class Board extends RenderObject {
     pattern: PatternView;
@@ -26,7 +27,7 @@ export default class Board extends RenderObject {
     currentRow: EditableRow;
 
     constructor() {
-        super();
+        super(true);
 
         this.guessPatterns = [];
 
@@ -54,7 +55,10 @@ export default class Board extends RenderObject {
     }
 
     addRow(pattern: Pattern): void {
-        this.rows.push(new Row(this.rows[this.rows.length - 1], pattern));
+        if (this.rows.length < this.rowAmount)
+            this.rows.push(new Row(this.rows[this.rows.length - 1], pattern));
+        else
+            manager.broadcast("lose");
     }
 
     render(sketch: p5): void {
