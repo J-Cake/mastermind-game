@@ -1,12 +1,12 @@
 import * as p5 from 'p5';
 import RenderObject from './RenderObject';
 
-import {manager, State} from './index';
-import Board from './Board';
 import Colour, {getColour} from "./Colour";
 import Row from "./Row";
 
-export type Pattern = [Colour, Colour, Colour, Colour];
+export type Peg = Colour.Red | Colour.Green | Colour.Blue | Colour.Orange | Colour.Yellow | Colour.Pink;
+
+export type Pattern = [Peg, Peg, Peg, Peg];
 
 export default class Pin extends RenderObject{
     public readonly colour: Colour;
@@ -40,4 +40,6 @@ export default class Pin extends RenderObject{
         this.pos.x = this.parent.pos.x + this.parent.markerWidth + ((this.parent.size.w - (this.parent.markerWidth * 1.5)) / 4 * (this.index * 1.5));
         this.pos.y = this.parent.pos.y + this.parent.size.h / 2;
     }
+
+    clean() {}
 }

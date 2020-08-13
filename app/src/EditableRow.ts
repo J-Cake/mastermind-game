@@ -5,6 +5,7 @@ import Board from './Board';
 import PinHole from "./PinHole";
 import Colour, {darken, getColour} from "./Colour";
 import Row from "./Row";
+import {Peg} from './Pin';
 
 export default class EditableRow extends RenderObject {
 
@@ -41,25 +42,6 @@ export default class EditableRow extends RenderObject {
         this.isValidTurn = false;
 
         manager.on("click", (state: State) => this.click(state.mouse));
-    }
-
-    private click(mouse: {x: number, y: number}): void {
-        const pos = {
-            x: this.pos.x + this.size.w + Row.pinRadius / 2,
-            y: this.pos.y
-        };
-        const size = {
-            w: this.size.h,
-            h: this.size.h
-        };
-
-        if (mouse.x > pos.x && mouse.y > pos.y && mouse.x < pos.x + size.w && mouse.y < pos.y + size.h && this.isValidTurn)
-            this.commitPattern();
-    }
-
-    private commitPattern(): void {
-        manager.setState().board.addRow([this.pins[0].colour, this.pins[1].colour, this.pins[2].colour, this.pins[3].colour]);
-        this.pins.forEach(i => i.colour = Colour.Blank);
     }
 
     render(sketch: p5): void {
@@ -100,23 +82,43 @@ export default class EditableRow extends RenderObject {
         }
     }
 
+    clean() {
+        this.pins.forEach(i => i.clean());
+        delete this.pins;
+    }
+
     protected update(sketch: p5): void {
-        manager.setState((state: State): Partial<State> => {
-            const board: Board = state.board;
+        const board: Board = manager.setState().board;
 
-            this.pos.x = board.pos.x;
+        this.pos.x = board.pos.x;
 
-            this.size.w = board.size.w;
-            this.size.h = board.size.h / (board.rowAmount + 1);
+        this.size.w = board.size.w;
+        this.size.h = board.size.h / (board.rowAmount + 1);
 
-            this.markerWidth = Math.sqrt(Math.PI) * this.size.h;
+        this.markerWidth = Math.sqrt(Math.PI) * this.size.h;
 
-            this.pos.y = board.size.h + board.pos.y - ((board.rows.length + 1) * this.size.h);
+        this.pos.y = board.size.h + board.pos.y - ((board.rows.length + 1) * this.size.h);
 
-            this.isValidTurn = !this.pins.map(i => [Colour.Red, Colour.Pink, Colour.Orange, Colour.Yellow, Colour.Blue, Colour.Green].includes(i.colour)).includes(false);
+        this.isValidTurn = !this.pins.map(i => [Colour.Red, Colour.Pink, Colour.Orange, Colour.Yellow, Colour.Blue, Colour.Green].includes(i.colour)).includes(false);
+    }
 
-            return {};
-        });
+    private click(mouse: { x: number, y: number }): void {
+        const pos = {
+            x: this.pos.x + this.size.w + Row.pinRadius / 2,
+            y: this.pos.y
+        };
+        const size = {
+            w: this.size.h,
+            h: this.size.h
+        };
+
+        if (mouse.x > pos.x && mouse.y > pos.y && mouse.x < pos.x + size.w && mouse.y < pos.y + size.h && this.isValidTurn)
+            this.commitPattern();
+    }
+
+    private commitPattern(): void {
+        manager.setState().board.addRow([this.pins[0].colour as Peg, this.pins[1].colour as Peg, this.pins[2].colour as Peg, this.pins[3].colour as Peg]);
+        this.pins.forEach(i => i.colour = Colour.Blank);
     }
 
 }

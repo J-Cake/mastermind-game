@@ -29,6 +29,7 @@ export default class GameStateIndicator extends RenderObject {
 
         manager.on("win", () => this.state = GameState.Win);
         manager.on("lose", () => this.state = GameState.Lose);
+        manager.on("restart", () => this.state = GameState.Ongoing);
 
         this.inspirationalMessages = {
             win: [],
@@ -103,6 +104,10 @@ export default class GameStateIndicator extends RenderObject {
             w: sketch.width,
             h: sketch.height / 3
         };
+    }
+
+    clean() {
+        
     }
 
 }

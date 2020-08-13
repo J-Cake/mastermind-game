@@ -2,7 +2,6 @@ import RenderObject from "./RenderObject";
 import * as p5 from 'p5';
 
 import {manager} from '.';
-import DropObject from "./DropObject";
 
 export default abstract class DragObject extends RenderObject {
     isDragging: boolean;
@@ -82,6 +81,10 @@ export default abstract class DragObject extends RenderObject {
         // relative movement
         // this.pos.x += sketch.mouseX - sketch.pmouseX;
         // this.pos.y += sketch.mouseY - sketch.pmouseY;
+    }
+
+    clean() {
+
     }
 
 }

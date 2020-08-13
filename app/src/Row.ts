@@ -2,7 +2,7 @@ import * as p5 from 'p5';
 import RenderObject from './RenderObject';
 import {manager} from '.';
 import Board from './Board';
-import Pin, {Pattern} from "./Pin";
+import Pin, {Pattern, Peg} from "./Pin";
 import Colour, {getColour} from "./Colour";
 
 export type Mark = Colour.White | Colour.Black | null;
@@ -53,29 +53,31 @@ export default class Row extends RenderObject {
         if (!guess.map((i, a) => i === secret[a]).includes(false))
             manager.broadcast("win");
 
-        const _mark: Mark[] = [];
+        const remaining: number[] = [];
+        const mark: Mark[] = [];
 
-        secret.forEach((i, a) => {
-            if (i === guess[a]) {
-                _mark.push(Colour.Black);
-                secret[a] = null as unknown as any;
-            }
-        })
-        secret.forEach((i, a) => {
-            if (i) {
-                const index = guess.indexOf(i);
-
-                if (index > -1 && index !== a)
-                    _mark.push(Colour.White);
-            }
+        secret.forEach((i ,a) => {
+            if (i === guess[a])
+                mark.push(Colour.Black);
+            else
+                remaining.push(a);
         });
 
-        const mark: [Mark, Mark, Mark, Mark] = [_mark[0], _mark[1], _mark[2], _mark[3]]
+        const _secret: Peg[] = secret.filter(((i, a) => remaining.includes(a)));
 
-        if (!mark.map(i => i === Colour.Black).includes(false))
+        for (const i of remaining) {
+            if (_secret.includes(guess[i])){
+                mark.push(Colour.White);
+                _secret.splice(i, 1);
+            }
+        }
+
+        const _mark: [Mark, Mark, Mark, Mark] = [mark[0], mark[1], mark[2], mark[3]]
+
+        if (!_mark.map(i => i === Colour.Black).includes(false))
             manager.broadcast("win");
 
-        return mark;
+        return _mark;
     }
 
     render(sketch: p5): void {
@@ -126,6 +128,13 @@ export default class Row extends RenderObject {
         new Pin(pattern[1], this, 1),
         new Pin(pattern[2], this, 2),
         new Pin(pattern[3], this, 3)];
+    }
+
+    clean() {
+        this.prevRow?.clean();
+        this.pins.forEach(i => i.clean());
+
+        delete this.prevRow;
     }
 
 }

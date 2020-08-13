@@ -6,12 +6,13 @@ import Colour, {getColour} from "./Colour";
 import DragPin from "./DragPin";
 import DragObject from "./DragObject";
 import {manager, State} from "./index";
+import { Peg } from './Pin';
 
 export default class PinHole extends DropObject {
     readonly parent: EditableRow;
     readonly index: number;
 
-    colour: Colour;
+    colour: Peg | Colour.Blank;
 
     pos: {
         x: number,
@@ -57,6 +58,10 @@ export default class PinHole extends DropObject {
     tick(sketch: p5): void {
         this.pos.x = this.parent.pos.x + this.parent.markerWidth + ((this.parent.size.w - (this.parent.markerWidth * 1.5)) / 4 * (this.index * 1.5));
         this.pos.y = this.parent.pos.y + this.parent.size.h / 2;
+    }
+
+    clean() {
+        this.parent.clean();
     }
 
 }

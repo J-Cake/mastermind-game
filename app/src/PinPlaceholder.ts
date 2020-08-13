@@ -5,7 +5,7 @@ import Colour, {getColour} from "./Colour";
 import Row from "./Row";
 import PatternView from "./PatternView";
 
-export default class Pin extends RenderObject {
+export default class PinPlaceholder extends RenderObject {
     pos: {
         x: number,
         y: number
@@ -80,4 +80,6 @@ export default class Pin extends RenderObject {
         };
     }
 
+    clean() {
+    }
 }

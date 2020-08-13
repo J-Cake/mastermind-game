@@ -54,4 +54,8 @@ export default class PinRack extends RenderObject {
         this.pins.forEach((pin, a) => pin.move({x: this.pinCellSize / 2, y: this.pos.y + this.pinCellSize * a + this.pinCellSize / 2}));
     }
 
+    clean() {
+        this.pins.forEach(i => i.clean());
+    }
+
 }

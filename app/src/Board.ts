@@ -1,6 +1,6 @@
 import * as p5 from 'p5';
 
-import {Pattern} from './Pin';
+import Pin, {Pattern} from './Pin';
 import RenderObject from './RenderObject';
 import Row from './Row';
 import EditableRow from "./EditableRow";
@@ -10,8 +10,6 @@ import { manager } from '.';
 
 export default class Board extends RenderObject {
     pattern: PatternView;
-
-    guessPatterns: Pattern[];
 
     padding: number;
 
@@ -28,8 +26,6 @@ export default class Board extends RenderObject {
 
     constructor() {
         super(true);
-
-        this.guessPatterns = [];
 
         this.aspectWidth = 9;
         this.aspectHeight = 16;
@@ -55,7 +51,7 @@ export default class Board extends RenderObject {
     }
 
     addRow(pattern: Pattern): void {
-        if (this.rows.length < this.rowAmount)
+        if (this.rows.length <= this.rowAmount)
             this.rows.push(new Row(this.rows[this.rows.length - 1], pattern));
         else
             manager.broadcast("lose");
@@ -81,5 +77,28 @@ export default class Board extends RenderObject {
             w: (this.aspectWidth * factor) - (2 * this.padding),
             h: (this.aspectHeight * factor) - (2 * this.padding)
         };
+    }
+
+    reset(): void {
+        RenderObject.purge(Row);
+        RenderObject.purge(Pin);
+        this.pattern.regen();
+        this.rows = [];
+    }
+
+    clean() {
+        this.pattern.clean();
+        this.rows.forEach((i, a) => {
+            i.clean();
+            delete this.rows[a];
+        });
+
+        this.currentRow.clean();
+
+        RenderObject.purge(Row);
+        RenderObject.purge(EditableRow);
+        RenderObject.purge(Pin);
+
+        this.pattern.pattern = this.pattern.generatePattern();
     }
 }

@@ -19,20 +19,23 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2ce81aa9-9d82-4382-9f21-125c6c324b7a" name="Default Changelist" comment="delete build">
-      <change afterPath="$PROJECT_DIR$/app/src/PatternView.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/PinPlaceholder.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/ThemeSwitcher.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.vscode/settings.json" beforeDir="false" afterPath="$PROJECT_DIR$/.vscode/settings.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.vscode/tasks.json" beforeDir="false" afterPath="$PROJECT_DIR$/.vscode/tasks.json" afterDir="false" />
+    <list default="true" id="2ce81aa9-9d82-4382-9f21-125c6c324b7a" name="Default Changelist" comment="Major Bug Fixes, ReWrote Grading algorithm, fixed game over.">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/Board.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/Board.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/Colour.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/Colour.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/DragObject.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/DragObject.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/DragPin.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/DragPin.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/EditableRow.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/EditableRow.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/GameStateIndicator.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/GameStateIndicator.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/PatternView.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/PatternView.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/Pin.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/Pin.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/PinHole.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/PinHole.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/PinPlaceholder.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/PinPlaceholder.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/PinRack.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/PinRack.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/RenderObject.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/RenderObject.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/Row.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/Row.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/ThemeSwitcher.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/ThemeSwitcher.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pnpm-lock.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pnpm-lock.yaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -66,7 +69,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="dart.analysis.tool.window.visible" value="false" />
     <property name="javascript.nodejs.core.library.configured.version" value="14.5.0" />
-    <property name="javascript.nodejs.core.library.typings.version" value="14.0.27" />
+    <property name="javascript.nodejs.core.library.typings.version" value="" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
@@ -78,6 +81,13 @@
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
     <property name="ts.external.directory.path" value="$PROJECT_DIR$/node_modules/typescript/lib" />
+  </component>
+  <component name="RunDashboard">
+    <option name="configurationTypes">
+      <set>
+        <option value="NodeJSConfigurationType" />
+      </set>
+    </option>
   </component>
   <component name="RunManager" selected="Node.js.build.js">
     <configuration name="Server" type="NodeJSConfigurationType" path-to-js-file="build/app/server.js" working-dir="$PROJECT_DIR$">
@@ -91,8 +101,8 @@
       </method>
     </configuration>
     <list>
-      <item itemvalue="Node.js.build.js" />
       <item itemvalue="Node.js.Server" />
+      <item itemvalue="Node.js.build.js" />
     </list>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -110,6 +120,10 @@
       <workItem from="1596805226295" duration="13000000" />
       <workItem from="1596974123067" duration="3840000" />
       <workItem from="1597014832439" duration="4001000" />
+      <workItem from="1597116675999" duration="4988000" />
+      <workItem from="1597142967588" duration="533000" />
+      <workItem from="1597203889893" duration="992000" />
+      <workItem from="1597279763407" duration="4291000" />
     </task>
     <task id="LOCAL-00001" summary="Added Drag'n'nDrop to place pins, created button mechanism and implemented guess rows.">
       <created>1596811195210</created>
@@ -153,9 +167,14 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Added Drag'n'nDrop to place pins, created button mechanism and implemented guess rows." />
     <MESSAGE value="delete build" />
-    <option name="LAST_COMMIT_MESSAGE" value="delete build" />
+    <MESSAGE value="Major Bug Fixes, ReWrote Grading algorithm, fixed game over." />
+    <option name="LAST_COMMIT_MESSAGE" value="Major Bug Fixes, ReWrote Grading algorithm, fixed game over." />
   </component>
   <component name="WindowStateProjectService">
+    <state x="555" y="177" width="800" height="712" key="#Plugins" timestamp="1597142986329">
+      <screen x="0" y="30" width="1920" height="1010" />
+    </state>
+    <state x="555" y="177" width="800" height="712" key="#Plugins/1920.0.1920.1080/0.30.1920.1010@0.30.1920.1010" timestamp="1597142986329" />
     <state x="424" y="193" width="1071" height="732" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1596776077324">
       <screen x="0" y="30" width="1920" height="1010" />
     </state>
@@ -174,32 +193,36 @@
       <screen x="0" y="30" width="1920" height="1010" />
     </state>
     <state x="707" y="393" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/1920.0.1920.1080/0.30.1920.1010@0.30.1920.1010" timestamp="1596811170498" />
+    <state x="192" y="86" key="DiffContextDialog" timestamp="1597143101648">
+      <screen x="0" y="30" width="1920" height="1010" />
+    </state>
+    <state x="192" y="86" key="DiffContextDialog/1920.0.1920.1080/0.30.1920.1010@0.30.1920.1010" timestamp="1597143101648" />
     <state x="747" y="293" key="FileChooserDialogImpl" timestamp="1596678106266">
       <screen x="0" y="30" width="1920" height="1010" />
     </state>
     <state x="747" y="293" key="FileChooserDialogImpl/0.30.1920.1010@0.30.1920.1010" timestamp="1596678106266" />
-    <state width="1878" height="271" key="GridCell.Tab.0.bottom" timestamp="1597038419230">
+    <state width="1294" height="271" key="GridCell.Tab.0.bottom" timestamp="1597286094155">
       <screen x="0" y="30" width="1920" height="1010" />
     </state>
-    <state width="1878" height="271" key="GridCell.Tab.0.bottom/0.30.1920.1010@0.30.1920.1010" timestamp="1597038419230" />
+    <state width="1294" height="271" key="GridCell.Tab.0.bottom/0.30.1920.1010@0.30.1920.1010" timestamp="1597286094155" />
     <state width="1878" height="272" key="GridCell.Tab.0.bottom/1920.0.1920.1080/0.30.1920.1010@0.30.1920.1010" timestamp="1597010856868" />
     <state width="1878" height="272" key="GridCell.Tab.0.bottom/1920.0.1920.1080/0.30.1920.1010@1920.0.1920.1080" timestamp="1596977695443" />
-    <state width="1878" height="271" key="GridCell.Tab.0.center" timestamp="1597038419228">
+    <state width="1294" height="271" key="GridCell.Tab.0.center" timestamp="1597286094155">
       <screen x="0" y="30" width="1920" height="1010" />
     </state>
-    <state width="1878" height="271" key="GridCell.Tab.0.center/0.30.1920.1010@0.30.1920.1010" timestamp="1597038419228" />
+    <state width="1294" height="271" key="GridCell.Tab.0.center/0.30.1920.1010@0.30.1920.1010" timestamp="1597286094155" />
     <state width="1878" height="272" key="GridCell.Tab.0.center/1920.0.1920.1080/0.30.1920.1010@0.30.1920.1010" timestamp="1597010856868" />
     <state width="1878" height="272" key="GridCell.Tab.0.center/1920.0.1920.1080/0.30.1920.1010@1920.0.1920.1080" timestamp="1596977695443" />
-    <state width="1878" height="271" key="GridCell.Tab.0.left" timestamp="1597038419227">
+    <state width="1294" height="271" key="GridCell.Tab.0.left" timestamp="1597286094154">
       <screen x="0" y="30" width="1920" height="1010" />
     </state>
-    <state width="1878" height="271" key="GridCell.Tab.0.left/0.30.1920.1010@0.30.1920.1010" timestamp="1597038419227" />
+    <state width="1294" height="271" key="GridCell.Tab.0.left/0.30.1920.1010@0.30.1920.1010" timestamp="1597286094154" />
     <state width="1878" height="272" key="GridCell.Tab.0.left/1920.0.1920.1080/0.30.1920.1010@0.30.1920.1010" timestamp="1597010856867" />
     <state width="1878" height="272" key="GridCell.Tab.0.left/1920.0.1920.1080/0.30.1920.1010@1920.0.1920.1080" timestamp="1596977695443" />
-    <state width="1878" height="271" key="GridCell.Tab.0.right" timestamp="1597038419228">
+    <state width="1294" height="271" key="GridCell.Tab.0.right" timestamp="1597286094155">
       <screen x="0" y="30" width="1920" height="1010" />
     </state>
-    <state width="1878" height="271" key="GridCell.Tab.0.right/0.30.1920.1010@0.30.1920.1010" timestamp="1597038419228" />
+    <state width="1294" height="271" key="GridCell.Tab.0.right/0.30.1920.1010@0.30.1920.1010" timestamp="1597286094155" />
     <state width="1878" height="272" key="GridCell.Tab.0.right/1920.0.1920.1080/0.30.1920.1010@0.30.1920.1010" timestamp="1597010856868" />
     <state width="1878" height="272" key="GridCell.Tab.0.right/1920.0.1920.1080/0.30.1920.1010@1920.0.1920.1080" timestamp="1596977695443" />
     <state width="1878" height="337" key="GridCell.Tab.1.bottom" timestamp="1596801745134">
@@ -250,18 +273,19 @@
       <screen x="0" y="30" width="1920" height="1010" />
     </state>
     <state width="1878" height="337" key="GridCell.Tab.3.right/1920.0.1920.1080/0.30.1920.1010@0.30.1920.1010" timestamp="1596801745135" />
-    <state x="560" y="269" key="Vcs.Push.Dialog.v2" timestamp="1596811456045">
+    <state x="560" y="269" width="800" height="528" key="Vcs.Push.Dialog.v2" timestamp="1597286031417">
       <screen x="0" y="30" width="1920" height="1010" />
     </state>
-    <state x="560" y="269" key="Vcs.Push.Dialog.v2/1920.0.1920.1080/0.30.1920.1010@0.30.1920.1010" timestamp="1596811456045" />
+    <state x="560" y="269" width="800" height="528" key="Vcs.Push.Dialog.v2/0.30.1920.1010@0.30.1920.1010" timestamp="1597286031417" />
+    <state x="560" y="269" key="Vcs.Push.Dialog.v2/1920.0.1920.1080/0.30.1920.1010@0.30.1920.1010" timestamp="1597143103733" />
     <state x="624" y="244" key="run.anything.popup" timestamp="1596855451245">
       <screen x="0" y="30" width="1920" height="1010" />
     </state>
     <state x="624" y="244" key="run.anything.popup/1920.0.1920.1080/0.30.1920.1010@0.30.1920.1010" timestamp="1596855451245" />
-    <state x="623" y="249" width="672" height="678" key="search.everywhere.popup" timestamp="1597016945577">
+    <state x="623" y="249" width="672" height="678" key="search.everywhere.popup" timestamp="1597204006692">
       <screen x="0" y="30" width="1920" height="1010" />
     </state>
-    <state x="623" y="249" width="672" height="678" key="search.everywhere.popup/0.30.1920.1010@0.30.1920.1010" timestamp="1597016945577" />
+    <state x="623" y="249" width="672" height="678" key="search.everywhere.popup/0.30.1920.1010@0.30.1920.1010" timestamp="1597204006692" />
     <state x="623" y="249" width="672" height="678" key="search.everywhere.popup/1920.0.1920.1080/0.30.1920.1010@0.30.1920.1010" timestamp="1596810766829" />
   </component>
 </project>

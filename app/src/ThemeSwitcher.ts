@@ -58,6 +58,7 @@ export default class ThemeSwitcher extends RenderObject {
 
         const points: [number, number][] = [
             // TODO: Draw Moon
+            [0, 0]
         ];
 
         sketch.beginShape();
@@ -89,5 +90,7 @@ export default class ThemeSwitcher extends RenderObject {
             y: Row.pinRadius
         }
     }
+
+    clean() {}
 
 }

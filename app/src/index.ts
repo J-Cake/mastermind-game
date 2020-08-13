@@ -1,11 +1,11 @@
-import * as p5 from 'p5';
+import * as _p5 from 'p5';
 import RenderObject from './RenderObject';
 import StateManager from "./stateManager";
 import Board from "./Board";
 import DragObject from "./DragObject";
 import DropObject from "./DropObject";
 import PinRack from "./PinRack";
-import Colour, {getColour, Theme} from "./Colour";
+import Colour, { getColour, Theme } from "./Colour";
 import ThemeSwitcher from "./ThemeSwitcher";
 import GameStateIndicator from "./GameStateIndicator";
 
@@ -25,22 +25,24 @@ export interface State {
     dropObjects: DropObject[],
     theme: Theme,
     themeSwitcher: ThemeSwitcher,
-    font: p5.Font,
-    indicator: GameStateIndicator
+    font: _p5.Font,
+    indicator: GameStateIndicator,
+    winCount: number,
+    lossCount: number
 }
 
 export const manager: StateManager<State> = new StateManager<State>({
     mouseDown: false,
     dragObjects: [],
-    mouse: {x: 0, y: 0},
-    dragStart: {x: 0, y: 0},
     dropObjects: [],
+    mouse: { x: 0, y: 0 },
+    dragStart: { x: 0, y: 0 },
     theme: Theme.Dark
 });
 
-const app: p5 = new p5(function (sketch) {
+new _p5(function (sketch) {
     sketch.setup = function () {
-        const canvas: p5.Renderer = sketch.createCanvas(window.innerWidth, window.innerHeight);
+        sketch.createCanvas(window.innerWidth, window.innerHeight);
 
         manager.setState({
             board: new Board(),
@@ -55,19 +57,19 @@ const app: p5 = new p5(function (sketch) {
         });
 
         window.addEventListener("click", function () {
-            const {dragStart, mouse} = manager.setState();
+            const { dragStart, mouse } = manager.setState();
             if (Math.sqrt((dragStart.x - mouse.x) ** 2 + (dragStart.y - mouse.y) ** 2) <= 5) // Only if there are objects that aren't in a dragging state
-                manager.dispatch("click", {mouse: {x: sketch.mouseX, y: sketch.mouseY}});
+                manager.dispatch("click", { mouse: { x: sketch.mouseX, y: sketch.mouseY } });
         })
 
         window.addEventListener("mousedown", function () {
             manager.setState({
-                dragStart: {x: sketch.mouseX, y: sketch.mouseY}
+                dragStart: { x: sketch.mouseX, y: sketch.mouseY }
             });
         });
 
         window.addEventListener("mousemove", function () { // Call MouseDown only after traveling a minimum distance
-            const {dragStart, mouse} = manager.setState();
+            const { dragStart, mouse } = manager.setState();
             if (Math.sqrt((dragStart.x - mouse.x) ** 2 + (dragStart.y - mouse.y) ** 2) > 5)
                 if (!manager.setState().dragObjects.find(i => i.isDragging))
                     manager.dispatch("mouseDown", {
@@ -81,14 +83,12 @@ const app: p5 = new p5(function (sketch) {
             })
         });
 
+        manager.on("win", prev => ({winCount: prev.winCount + 1}));
+        manager.on("lose", prev => ({lossCount: prev.lossCount + 1}));
+
         manager.on("restart", function () {
-            manager.setState({
-                board: new Board(),
-                pinRack: new PinRack(),
-                themeSwitcher: new ThemeSwitcher(),
-                // font: sketch.loadFont("./montserrat.ttf"),
-                indicator: new GameStateIndicator()
-            });
+            manager.setState().board.reset();
+            RenderObject.print();
         });
     }
 

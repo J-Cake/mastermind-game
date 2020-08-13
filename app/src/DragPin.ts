@@ -5,11 +5,12 @@ import Colour, { getColour } from "./Colour";
 import Row from "./Row";
 import { manager } from '.';
 import PinHole from './PinHole';
+import { Peg } from './Pin';
 
 export default class DragPin extends DragObject {
-    readonly colour: Colour;
+    readonly colour: Peg | Colour.Blank;
 
-    constructor(colour: Colour) {
+    constructor(colour: Peg | Colour.Blank) {
         super(true);
 
         this.colour = colour;
@@ -39,5 +40,9 @@ export default class DragPin extends DragObject {
 
     protected tick(sketch: p5): void { // Handle updates here. Movement is handled by base class
     }
+
+    clean() {}
+    
+
 
 }

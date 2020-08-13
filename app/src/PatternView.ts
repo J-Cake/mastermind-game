@@ -1,7 +1,7 @@
 import * as p5 from 'p5';
 
 import RenderObject from "./RenderObject";
-import {Pattern} from "./Pin";
+import {Pattern, Peg} from "./Pin";
 import Colour, {getColour} from "./Colour";
 import Row from "./Row";
 import PinPlaceholder from "./PinPlaceholder";
@@ -40,9 +40,17 @@ export default class PatternView extends RenderObject {
         this.pins = this.pattern.map((i, a) => new PinPlaceholder(i, a, this, true));
     }
 
+    regen() {
+        this.pins.forEach(i => i.clean());
+        RenderObject.purge(PinPlaceholder);
+        this.pattern = this.generatePattern();
+
+        this.pins = this.pattern.map((i, a) => new PinPlaceholder(i, a, this, true));
+    }
+
     generatePattern(): Pattern {
-        const allowedColours: Colour[] = [Colour.Green, Colour.Blue, Colour.Yellow, Colour.Orange, Colour.Pink, Colour.Red];
-        const rnd: () => Colour = () => allowedColours[Math.floor(Math.random() * allowedColours.length)];
+        const allowedColours: Peg[] = [Colour.Green, Colour.Blue, Colour.Yellow, Colour.Orange, Colour.Pink, Colour.Red];
+        const rnd: () => Peg = () => allowedColours[Math.floor(Math.random() * allowedColours.length)];
 
         return [rnd(), rnd(), rnd(), rnd()];
     }
@@ -69,6 +77,11 @@ export default class PatternView extends RenderObject {
         }
 
         this.pins.forEach((pin, a) => pin.move({x: this.pinCellSize / 2, y: this.pos.y + this.pinCellSize * a + this.pinCellSize / 2}));
+    }
+
+    clean() {
+        this.pins.forEach(i => i.clean());
+        delete this.pins;
     }
 
 }
