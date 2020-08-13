@@ -22,7 +22,7 @@ export default class PatternView extends RenderObject {
     }
 
     constructor() {
-        super();
+        super(true);
         this.pattern = this.generatePattern();
 
         this.pos = {
@@ -66,7 +66,7 @@ export default class PatternView extends RenderObject {
             pin.render(sketch);
     }
 
-    protected update(sketch: p5): void {
+    update(sketch: p5): void {
         this.size = {
             w: this.pinCellSize,
             h: this.pinCellSize * this.pattern.length

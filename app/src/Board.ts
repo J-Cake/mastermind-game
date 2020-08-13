@@ -51,7 +51,7 @@ export default class Board extends RenderObject {
     }
 
     addRow(pattern: Pattern): void {
-        if (this.rows.length <= this.rowAmount)
+        if (this.rows.length < this.rowAmount)
             this.rows.push(new Row(this.rows[this.rows.length - 1], pattern));
         else
             manager.broadcast("lose");

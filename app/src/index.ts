@@ -113,5 +113,8 @@ new _p5(function (sketch) {
 
         manager.setState().indicator.render(sketch);
         manager.setState().indicator.update(sketch);
+
+        board.pattern.render(sketch)
+        board.pattern.update(sketch);
     }
 });

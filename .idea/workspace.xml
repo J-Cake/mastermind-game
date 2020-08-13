@@ -22,19 +22,7 @@
     <list default="true" id="2ce81aa9-9d82-4382-9f21-125c6c324b7a" name="Default Changelist" comment="Major Bug Fixes, ReWrote Grading algorithm, fixed game over.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/Board.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/Board.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/Colour.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/Colour.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/DragObject.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/DragObject.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/DragPin.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/DragPin.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/EditableRow.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/EditableRow.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/GameStateIndicator.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/GameStateIndicator.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/PatternView.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/PatternView.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/Pin.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/Pin.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/PinHole.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/PinHole.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/PinPlaceholder.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/PinPlaceholder.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/PinRack.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/PinRack.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/RenderObject.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/RenderObject.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/Row.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/Row.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/ThemeSwitcher.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/ThemeSwitcher.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/index.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -123,7 +111,7 @@
       <workItem from="1597116675999" duration="4988000" />
       <workItem from="1597142967588" duration="533000" />
       <workItem from="1597203889893" duration="992000" />
-      <workItem from="1597279763407" duration="4291000" />
+      <workItem from="1597279763407" duration="6183000" />
     </task>
     <task id="LOCAL-00001" summary="Added Drag'n'nDrop to place pins, created button mechanism and implemented guess rows.">
       <created>1596811195210</created>
@@ -146,7 +134,14 @@
       <option name="project" value="LOCAL" />
       <updated>1596811452386</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Major Bug Fixes, ReWrote Grading algorithm, fixed game over.">
+      <created>1597286197194</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1597286197194</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -201,28 +196,28 @@
       <screen x="0" y="30" width="1920" height="1010" />
     </state>
     <state x="747" y="293" key="FileChooserDialogImpl/0.30.1920.1010@0.30.1920.1010" timestamp="1596678106266" />
-    <state width="1294" height="271" key="GridCell.Tab.0.bottom" timestamp="1597286094155">
+    <state width="1294" height="271" key="GridCell.Tab.0.bottom" timestamp="1597288198938">
       <screen x="0" y="30" width="1920" height="1010" />
     </state>
-    <state width="1294" height="271" key="GridCell.Tab.0.bottom/0.30.1920.1010@0.30.1920.1010" timestamp="1597286094155" />
+    <state width="1294" height="271" key="GridCell.Tab.0.bottom/0.30.1920.1010@0.30.1920.1010" timestamp="1597288198938" />
     <state width="1878" height="272" key="GridCell.Tab.0.bottom/1920.0.1920.1080/0.30.1920.1010@0.30.1920.1010" timestamp="1597010856868" />
     <state width="1878" height="272" key="GridCell.Tab.0.bottom/1920.0.1920.1080/0.30.1920.1010@1920.0.1920.1080" timestamp="1596977695443" />
-    <state width="1294" height="271" key="GridCell.Tab.0.center" timestamp="1597286094155">
+    <state width="1294" height="271" key="GridCell.Tab.0.center" timestamp="1597288198938">
       <screen x="0" y="30" width="1920" height="1010" />
     </state>
-    <state width="1294" height="271" key="GridCell.Tab.0.center/0.30.1920.1010@0.30.1920.1010" timestamp="1597286094155" />
+    <state width="1294" height="271" key="GridCell.Tab.0.center/0.30.1920.1010@0.30.1920.1010" timestamp="1597288198938" />
     <state width="1878" height="272" key="GridCell.Tab.0.center/1920.0.1920.1080/0.30.1920.1010@0.30.1920.1010" timestamp="1597010856868" />
     <state width="1878" height="272" key="GridCell.Tab.0.center/1920.0.1920.1080/0.30.1920.1010@1920.0.1920.1080" timestamp="1596977695443" />
-    <state width="1294" height="271" key="GridCell.Tab.0.left" timestamp="1597286094154">
+    <state width="1294" height="271" key="GridCell.Tab.0.left" timestamp="1597288198937">
       <screen x="0" y="30" width="1920" height="1010" />
     </state>
-    <state width="1294" height="271" key="GridCell.Tab.0.left/0.30.1920.1010@0.30.1920.1010" timestamp="1597286094154" />
+    <state width="1294" height="271" key="GridCell.Tab.0.left/0.30.1920.1010@0.30.1920.1010" timestamp="1597288198937" />
     <state width="1878" height="272" key="GridCell.Tab.0.left/1920.0.1920.1080/0.30.1920.1010@0.30.1920.1010" timestamp="1597010856867" />
     <state width="1878" height="272" key="GridCell.Tab.0.left/1920.0.1920.1080/0.30.1920.1010@1920.0.1920.1080" timestamp="1596977695443" />
-    <state width="1294" height="271" key="GridCell.Tab.0.right" timestamp="1597286094155">
+    <state width="1294" height="271" key="GridCell.Tab.0.right" timestamp="1597288198938">
       <screen x="0" y="30" width="1920" height="1010" />
     </state>
-    <state width="1294" height="271" key="GridCell.Tab.0.right/0.30.1920.1010@0.30.1920.1010" timestamp="1597286094155" />
+    <state width="1294" height="271" key="GridCell.Tab.0.right/0.30.1920.1010@0.30.1920.1010" timestamp="1597288198938" />
     <state width="1878" height="272" key="GridCell.Tab.0.right/1920.0.1920.1080/0.30.1920.1010@0.30.1920.1010" timestamp="1597010856868" />
     <state width="1878" height="272" key="GridCell.Tab.0.right/1920.0.1920.1080/0.30.1920.1010@1920.0.1920.1080" timestamp="1596977695443" />
     <state width="1878" height="337" key="GridCell.Tab.1.bottom" timestamp="1596801745134">
@@ -273,10 +268,10 @@
       <screen x="0" y="30" width="1920" height="1010" />
     </state>
     <state width="1878" height="337" key="GridCell.Tab.3.right/1920.0.1920.1080/0.30.1920.1010@0.30.1920.1010" timestamp="1596801745135" />
-    <state x="560" y="269" width="800" height="528" key="Vcs.Push.Dialog.v2" timestamp="1597286031417">
+    <state x="560" y="269" width="800" height="528" key="Vcs.Push.Dialog.v2" timestamp="1597286213957">
       <screen x="0" y="30" width="1920" height="1010" />
     </state>
-    <state x="560" y="269" width="800" height="528" key="Vcs.Push.Dialog.v2/0.30.1920.1010@0.30.1920.1010" timestamp="1597286031417" />
+    <state x="560" y="269" width="800" height="528" key="Vcs.Push.Dialog.v2/0.30.1920.1010@0.30.1920.1010" timestamp="1597286213957" />
     <state x="560" y="269" key="Vcs.Push.Dialog.v2/1920.0.1920.1080/0.30.1920.1010@0.30.1920.1010" timestamp="1597143103733" />
     <state x="624" y="244" key="run.anything.popup" timestamp="1596855451245">
       <screen x="0" y="30" width="1920" height="1010" />
