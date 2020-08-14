@@ -4,6 +4,7 @@ import RenderObject from "./RenderObject";
 import DragPin from "./DragPin";
 import Colour, {getColour} from "./Colour";
 import Row from "./Row";
+import {Interpolation} from "./interpolation";
 
 export default class PinRack extends RenderObject {
     readonly pins: [DragPin, DragPin, DragPin, DragPin, DragPin, DragPin];
@@ -36,7 +37,7 @@ export default class PinRack extends RenderObject {
 
     render(sketch: p5): void {
         sketch.noStroke();
-        sketch.fill(getColour(Colour.Panel)); // TODO: Replace with textured image
+        sketch.fill(getColour(Colour.Panel, {duration: 30, type: Interpolation.linear})); // TODO: Replace with textured image
 
         sketch.rect(this.pos.x, this.pos.y, this.size.w, this.size.h);
     }

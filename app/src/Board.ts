@@ -7,6 +7,7 @@ import EditableRow from "./EditableRow";
 import Colour, {getColour} from "./Colour";
 import PatternView from "./PatternView";
 import { manager } from '.';
+import {Interpolation} from "./interpolation";
 
 export default class Board extends RenderObject {
     pattern: PatternView;
@@ -51,7 +52,7 @@ export default class Board extends RenderObject {
     }
 
     addRow(pattern: Pattern): void {
-        if (this.rows.length < this.rowAmount)
+        if (this.rows.length <= (this.rowAmount - 1))
             this.rows.push(new Row(this.rows[this.rows.length - 1], pattern));
         else
             manager.broadcast("lose");
@@ -59,7 +60,7 @@ export default class Board extends RenderObject {
 
     render(sketch: p5): void {
         sketch.noStroke();
-        sketch.fill(getColour(Colour.Panel));
+        sketch.fill(getColour(Colour.Panel, {duration: 30, type: Interpolation.linear}));
         sketch.rect(this.pos.x, this.pos.y, this.size.w, this.size.h);
     }
 

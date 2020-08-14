@@ -3,6 +3,7 @@ import RenderObject from './RenderObject';
 
 import Colour, {getColour} from "./Colour";
 import Row from "./Row";
+import {Interpolation} from "./interpolation";
 
 export type Peg = Colour.Red | Colour.Green | Colour.Blue | Colour.Orange | Colour.Yellow | Colour.Pink;
 
@@ -31,7 +32,7 @@ export default class Pin extends RenderObject{
 
     render(sketch: p5): void {
         sketch.noStroke();
-        sketch.fill(getColour(this.colour));
+        sketch.fill(getColour(this.colour, {duration: 30, type: Interpolation.linear}));
         sketch.ellipse(this.pos.x, this.pos.y, Row.pinRadius);
         sketch.noFill();
     }

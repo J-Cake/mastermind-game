@@ -7,6 +7,7 @@ import DragPin from "./DragPin";
 import DragObject from "./DragObject";
 import {manager, State} from "./index";
 import { Peg } from './Pin';
+import {Interpolation} from "./interpolation";
 
 export default class PinHole extends DropObject {
     readonly parent: EditableRow;
@@ -51,7 +52,7 @@ export default class PinHole extends DropObject {
     draw(sketch: p5): void {
         // sketch.stroke([25, 25, 25]);
         sketch.noStroke();
-        sketch.fill(getColour(this.colour));
+        sketch.fill(getColour(this.colour, {duration: 30, type: Interpolation.linear}));
         sketch.ellipse(this.pos.x, this.pos.y, Row.pinRadius);
     }
 

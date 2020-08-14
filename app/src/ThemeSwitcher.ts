@@ -3,6 +3,8 @@ import RenderObject from "./RenderObject";
 import Colour, {getColour, Theme} from "./Colour";
 import Row from "./Row";
 import {manager} from "./index";
+import {Interpolation} from "./interpolation";
+import * as mousetrap from "mousetrap";
 
 export default class ThemeSwitcher extends RenderObject {
 
@@ -22,22 +24,26 @@ export default class ThemeSwitcher extends RenderObject {
             y: 0
         };
 
-        manager.on("click", state => this.click(state.mouse));
+        manager.on("click", state => this.click(state.mouse, state.frame));
+        mousetrap.bind("tab", (e) => {
+            e.preventDefault();
+            this.switch(manager.setState().frame)
+        });
     }
 
-    click(mouse: {x: number, y: number}) {
+    click(mouse: {x: number, y: number}, frame: number) {
         if (Math.sqrt((this.pos.x - mouse.x) ** 2 + (this.pos.y - mouse.y) ** 2) <= Row.pinRadius * 1.5)
-            this.switch();
+            this.switch(frame);
     }
 
-    switch() {
-        manager.dispatch("toggleTheme", prev => ({theme: prev.theme === Theme.Dark ? Theme.Light : Theme.Dark}));
+    switch(frame: number) {
+        manager.dispatch("toggleTheme", prev => ({themes: [...prev.themes, prev.themes.last() === Theme.Dark ? Theme.Light : Theme.Dark], switchFrame: frame}));
     }
 
     sun(sketch: p5) {
         const length = 0.5;
 
-        sketch.stroke(getColour(Colour.Background));
+        sketch.stroke(getColour(Colour.Background, {duration: 30, type: Interpolation.linear}));
         sketch.strokeWeight(5);
 
         for (let i = 0; i < Math.PI; i += Math.PI / 4)
@@ -48,23 +54,21 @@ export default class ThemeSwitcher extends RenderObject {
                 this.pos.y - Math.sin(i) * Row.pinRadius * length);
 
         sketch.noStroke();
-        sketch.fill(getColour(Colour.Background));
+        sketch.fill(getColour(Colour.Background, {duration: 30, type: Interpolation.linear}));
         sketch.ellipse(this.pos.x, this.pos.y, Row.pinRadius * 0.75);
+        sketch.strokeWeight(5);
+        sketch.stroke(getColour(Colour.Blank, {duration: 30, type: Interpolation.linear}));
+        sketch.ellipse(this.pos.x, this.pos.y, Row.pinRadius * 0.7);
     }
 
     moon(sketch: p5) {
         sketch.noStroke();
-        sketch.fill(getColour(Colour.Background));
+        sketch.fill(getColour(Colour.Background, {duration: 30, type: Interpolation.linear}));
 
-        const points: [number, number][] = [
-            // TODO: Draw Moon
-            [0, 0]
-        ];
+        sketch.ellipse(this.pos.x, this.pos.y, Row.pinRadius);
 
-        sketch.beginShape();
-
-        for (const vertex of points)
-                sketch.curveVertex((this.pos.x - Row.pinRadius * 0.75) + (Row.pinRadius * 1.5) * vertex[0], (this.pos.y - Row.pinRadius * 0.75) + (Row.pinRadius * 1.5) * vertex[1]);
+        sketch.fill(getColour(Colour.Blank, {duration: 30, type: Interpolation.linear}));
+        sketch.ellipse(this.pos.x + Row.pinRadius / 4, this.pos.y - Row.pinRadius / 4, Row.pinRadius / 1.5);
 
         sketch.endShape();
     }
@@ -77,11 +81,11 @@ export default class ThemeSwitcher extends RenderObject {
     }
 
     render(sketch: p5): void {
-        sketch.fill(getColour(Colour.Blank));
+        sketch.fill(getColour(Colour.Blank, {duration: 30, type: Interpolation.linear}));
         sketch.noStroke();
         sketch.ellipse(this.pos.x, this.pos.y, Row.pinRadius * 1.5);
 
-        this.icons[manager.setState().theme](sketch);
+        this.icons[manager.setState().themes.last()](sketch);
     }
 
     protected update(sketch: p5): void {

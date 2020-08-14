@@ -1,13 +1,26 @@
 import * as _p5 from 'p5';
+import * as mousetrap from "mousetrap";
+
 import RenderObject from './RenderObject';
 import StateManager from "./stateManager";
 import Board from "./Board";
 import DragObject from "./DragObject";
 import DropObject from "./DropObject";
 import PinRack from "./PinRack";
-import Colour, { getColour, Theme } from "./Colour";
+import Colour, {getColour, Theme} from "./Colour";
 import ThemeSwitcher from "./ThemeSwitcher";
 import GameStateIndicator from "./GameStateIndicator";
+import interpolate, {constrain, Interpolation, map} from "./interpolation";
+import Row from "./Row";
+
+declare global {
+    interface Array<T> {
+        last(i?: number): T;
+    }
+}
+Array.prototype.last = function (i: number = 0) {
+    return this[this.length - (Math.max(i, 0) + 1)];
+}
 
 export interface State {
     board: Board,
@@ -23,12 +36,14 @@ export interface State {
         y: number
     },
     dropObjects: DropObject[],
-    theme: Theme,
+    themes: Theme[],
     themeSwitcher: ThemeSwitcher,
     font: _p5.Font,
     indicator: GameStateIndicator,
     winCount: number,
-    lossCount: number
+    lossCount: number,
+    switchFrame: number, // The frame on which the theme was last switched
+    frame: number
 }
 
 export const manager: StateManager<State> = new StateManager<State>({
@@ -37,7 +52,7 @@ export const manager: StateManager<State> = new StateManager<State>({
     dropObjects: [],
     mouse: { x: 0, y: 0 },
     dragStart: { x: 0, y: 0 },
-    theme: Theme.Dark
+    themes: [Theme.Dark]
 });
 
 new _p5(function (sketch) {
@@ -48,8 +63,9 @@ new _p5(function (sketch) {
             board: new Board(),
             pinRack: new PinRack(),
             themeSwitcher: new ThemeSwitcher(),
-            // font: sketch.loadFont("./montserrat.ttf"),
-            indicator: new GameStateIndicator()
+            font: sketch.loadFont("./montserrat.ttf"),
+            indicator: new GameStateIndicator(),
+            switchFrame: 0
         });
 
         window.addEventListener("resize", function () {
@@ -90,16 +106,21 @@ new _p5(function (sketch) {
             manager.setState().board.reset();
             RenderObject.print();
         });
+
+        mousetrap.bind("enter", () => manager.broadcast("enter"));
     }
 
     sketch.draw = function () {
-        sketch.background(getColour(Colour.Background));
+        sketch.background(getColour(Colour.Background, {duration: 30, type: Interpolation.linear}));
+
+        Row.pinRadius = constrain(map(interpolate(manager.setState().frame, 0, 15, Interpolation.linear), 0, 15, 0, 35), 0, 35)
 
         manager.setState({
             mouse: {
                 x: sketch.mouseX,
                 y: sketch.mouseY
             },
+            frame: sketch.frameCount,
             mouseDown: sketch.mouseIsPressed
         });
 
@@ -114,7 +135,11 @@ new _p5(function (sketch) {
         manager.setState().indicator.render(sketch);
         manager.setState().indicator.update(sketch);
 
-        board.pattern.render(sketch)
-        board.pattern.update(sketch);
+        sketch.noStroke();
+        sketch.fill(getColour(Colour.Blank, {duration: 30, type: Interpolation.linear}));
+        sketch.textFont(manager.setState().font);
+        sketch.textSize(20);
+        sketch.textAlign(sketch.BASELINE);
+        sketch.text("By Jacob Schneider", 20, sketch.height - 20);
     }
 });

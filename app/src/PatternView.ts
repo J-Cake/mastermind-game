@@ -6,6 +6,7 @@ import Colour, {getColour} from "./Colour";
 import Row from "./Row";
 import PinPlaceholder from "./PinPlaceholder";
 import { manager } from '.';
+import {Interpolation} from "./interpolation";
 
 export default class PatternView extends RenderObject {
     readonly pinCellSize = Row.pinRadius * 1.75;
@@ -22,7 +23,7 @@ export default class PatternView extends RenderObject {
     }
 
     constructor() {
-        super(true);
+        super();
         this.pattern = this.generatePattern();
 
         this.pos = {
@@ -58,7 +59,7 @@ export default class PatternView extends RenderObject {
     render(sketch: p5): void {
         sketch.noStroke();
 
-        sketch.fill(getColour(Colour.Panel)); // TODO: Replace with textured image
+        sketch.fill(getColour(Colour.Panel, {duration: 30, type: Interpolation.linear})); // TODO: Replace with textured image
 
         sketch.rect(this.pos.x, this.pos.y, this.size.w, this.size.h);
 

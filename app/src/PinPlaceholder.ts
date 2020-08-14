@@ -4,6 +4,7 @@ import RenderObject from "./RenderObject";
 import Colour, {getColour} from "./Colour";
 import Row from "./Row";
 import PatternView from "./PatternView";
+import {Interpolation} from "./interpolation";
 
 export default class PinPlaceholder extends RenderObject {
     pos: {
@@ -43,10 +44,10 @@ export default class PinPlaceholder extends RenderObject {
             sketch.ellipse(this.pos.x, this.pos.y, Row.pinRadius);
             sketch.noFill();
         } else {
-            sketch.fill(getColour(Colour.Blank));
+            sketch.fill(getColour(Colour.Blank, {duration: 30, type: Interpolation.linear}));
             sketch.ellipse(this.pos.x, this.pos.y, Row.pinRadius);
             sketch.noFill();
-            sketch.stroke(getColour(Colour.Background));
+            sketch.stroke(getColour(Colour.Background, {duration: 30, type: Interpolation.linear}));
             sketch.strokeWeight(4);
 
             const points: [number, number][] = [

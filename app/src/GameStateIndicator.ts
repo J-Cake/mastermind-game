@@ -2,6 +2,9 @@ import * as p5 from 'p5';
 import RenderObject from "./RenderObject";
 import Colour, {darken, getColour} from './Colour';
 import {manager, State} from '.';
+import Row from "./Row";
+import {Pattern} from "./Pin";
+import interpolate, {constrain, Interpolation, map} from './interpolation';
 
 export enum GameState {
     Win,
@@ -19,7 +22,10 @@ export default class GameStateIndicator extends RenderObject {
     size: {
         w: number,
         h: number
-    }
+    };
+
+    stateChangeFrame: number;
+    isLeaving: boolean;
 
     readonly inspirationalMessages: { win: string[], lose: string[] };
 
@@ -27,9 +33,21 @@ export default class GameStateIndicator extends RenderObject {
         super(true);
         this.state = GameState.Ongoing;
 
-        manager.on("win", () => this.state = GameState.Win);
-        manager.on("lose", () => this.state = GameState.Lose);
-        manager.on("restart", () => this.state = GameState.Ongoing);
+        manager.on("win", state => {
+            this.isLeaving = false;
+            this.stateChangeFrame = state.frame;
+            this.state = GameState.Win
+        });
+        manager.on("lose", state => {
+            this.isLeaving = true;
+            this.stateChangeFrame = state.frame;
+            this.state = GameState.Lose
+        });
+        manager.on("restart", state => {
+            this.stateChangeFrame = state.frame;
+            this.isLeaving = true;
+            this.state = GameState.Ongoing;
+        });
 
         this.inspirationalMessages = {
             win: [],
@@ -45,14 +63,23 @@ export default class GameStateIndicator extends RenderObject {
             w: 0,
             h: 0
         };
+
+        this.stateChangeFrame = 0;
+        this.isLeaving = false;
+
+        manager.on("enter", (state) => {
+            if (this.state !== GameState.Ongoing && Math.abs(this.stateChangeFrame - state.frame) > 5)
+                manager.broadcast("restart");
+        });
     }
 
-    click(pos: {x: number, y: number}) {
+    click(pos: { x: number, y: number }) {
         if (pos.y > this.pos.y && pos.y < this.pos.y + this.size.h && this.state !== GameState.Ongoing)
             manager.broadcast("restart");
     }
 
     win(sketch: p5) {
+        sketch.noStroke();
         sketch.fill([...getColour(Colour.Blank), 20]);
         sketch.rect(0, 0, sketch.width, sketch.height);
 
@@ -63,14 +90,15 @@ export default class GameStateIndicator extends RenderObject {
 
         sketch.rect(this.pos.x, this.pos.y, this.size.w, this.size.h);
         sketch.textAlign(sketch.CENTER, sketch.CENTER);
-        // sketch.textFont(manager.setState().font);
+        sketch.textFont(manager.setState().font);
         sketch.textSize(sketch.height / 6);
         sketch.fill(darken(Colour.Background, 50));
         sketch.fill(getColour(Colour.Background));
-        sketch.text("You Win!", sketch.width / 2, sketch.height / 2);
+        sketch.text("You Win!", this.pos.x + sketch.width / 2, sketch.height / 2);
     }
 
     lose(sketch: p5) {
+        sketch.noStroke();
         sketch.fill([...getColour(Colour.Blank), 20]);
         sketch.rect(0, 0, sketch.width, sketch.height);
 
@@ -81,25 +109,44 @@ export default class GameStateIndicator extends RenderObject {
 
         sketch.rect(this.pos.x, this.pos.y, this.size.w, this.size.h);
         sketch.textAlign(sketch.CENTER, sketch.CENTER);
-        // sketch.textFont(manager.setState().font);
+        sketch.textFont(manager.setState().font);
         sketch.textSize(sketch.height / 6);
         sketch.fill(darken(Colour.Background, 50));
         sketch.fill(getColour(Colour.Background));
-        sketch.text("You Lose!", sketch.width / 2, sketch.height / 2);
+        sketch.text("You Lose!", this.pos.x + sketch.width / 2, sketch.height / 2);
     }
 
     render(sketch: p5): void {
-        if (this.state === GameState.Win)
+        if (this.state === GameState.Win || (manager.setState().frame <= this.stateChangeFrame + 15 && this.isLeaving))
             this.win(sketch);
-        else if (this.state === GameState.Lose)
+        else if (this.state === GameState.Lose || (manager.setState().frame <= this.stateChangeFrame + 15 && this.isLeaving))
             this.lose(sketch);
+
+        if (this.state !== GameState.Ongoing || (manager.setState().frame <= this.stateChangeFrame + 15 && this.isLeaving)) {
+            const pattern: Pattern = manager.setState().board.pattern.pattern;
+
+            sketch.fill(getColour(Colour.Background));
+            sketch.noStroke();
+            sketch.rect(0 - this.pos.x, sketch.height / 3 + Row.pinRadius / 2, sketch.width, Row.pinRadius * 2);
+
+            pattern.forEach((i, a) => {
+                sketch.fill(getColour(i));
+                sketch.ellipse(sketch.width / 2 - Row.pinRadius * pattern.length + (2 * Row.pinRadius * a) - this.pos.x, sketch.height / 3 + Row.pinRadius * 1.5, Row.pinRadius, Row.pinRadius);
+            });
+        }
     }
 
     update(sketch: p5): void {
-        this.pos = {
-            x: 0,
-            y: sketch.height / 3
-        };
+        if (this.isLeaving)
+            this.pos = {
+                x: constrain(map(interpolate(manager.setState().frame, this.stateChangeFrame, this.stateChangeFrame + 15, Interpolation.reverseLinear), this.stateChangeFrame, this.stateChangeFrame + 15, sketch.width * -1, 0), sketch.width * -1, 0),
+                y: sketch.height / 3
+            };
+        else
+            this.pos = {
+                x: constrain(map(interpolate(manager.setState().frame, this.stateChangeFrame, this.stateChangeFrame + 15, Interpolation.linear), this.stateChangeFrame, this.stateChangeFrame + 15, sketch.width, 0), 0, sketch.width),
+                y: sketch.height / 3
+            };
         this.size = {
             w: sketch.width,
             h: sketch.height / 3
@@ -107,7 +154,7 @@ export default class GameStateIndicator extends RenderObject {
     }
 
     clean() {
-        
+
     }
 
 }
